@@ -1,0 +1,12 @@
+{
+  "name": "RM Superfícies",
+  "short_name": "RM Superfícies",
+  "description": "Marmoraria em Itaquaquecetuba - SP. Bancadas, pias e móveis sob medida em pedra.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f3",
+  "theme_color": "#141517",
+  "icons": [
+    { "src": "/assets/img/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
