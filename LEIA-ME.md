@@ -49,3 +49,12 @@ A inspeção visual em navegador e os testes interativos não puderam ser conclu
 ## Foto da abertura
 
 Foto principal substituída pela imagem da ilha de cozinha enviada em 16/09. Texto da headline preservado; carregamento prioritário atualizado para a nova imagem.
+
+## Revisão conforme capturas das 16h
+
+- Foto enviada adicionada ao card Churrasqueiras e áreas gourmet, com ampliação e sem legenda.
+- Título de serviços alterado para “Bancadas e peças sob medida para cada ambiente”.
+- Granito: suporta altas temperaturas; mármore e quartzito: podem manchar; porcelanato: não mancha e exige limpeza simples com detergente neutro e esponja macia, sem abrasivos.
+- Nuovolam descrito como lâmina ultracompacta; acabamentos: polido, acetinado, escovado e ripado.
+- Selo do bloco de garantia restaurado para 1 ano de garantia; prazo sincronizado com a FAQ e seus dados estruturados. O destaque de experiência na abertura permanece +5, conforme revisão anterior.
+- Avaliações: título “Nota 5,0 no Google” e texto solicitado sobre a experiência dos clientes.
