@@ -7,65 +7,8 @@
   var ano = document.getElementById('ano');
   if (ano) ano.textContent = new Date().getFullYear();
 
-  /* máscara de telefone */
-  var tel = document.getElementById('telefone');
-  if (tel) {
-    tel.addEventListener('input', function () {
-      var v = tel.value.replace(/\D/g, '').slice(0, 11);
-      var out = v;
-      if (v.length > 2) out = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-      if (v.length > 7) {
-        out = v.length === 11
-          ? '(' + v.slice(0, 2) + ') ' + v.slice(2, 3) + ' ' + v.slice(3, 7) + '-' + v.slice(7)
-          : '(' + v.slice(0, 2) + ') ' + v.slice(2, 6) + '-' + v.slice(6);
-      }
-      tel.value = out;
-      tel.setCustomValidity(v.length >= 10 ? '' : 'Telefone incompleto');
-    });
-  }
-
-  /* validação + envio */
-  var form = document.getElementById('formOrcamento');
-  var btn = document.getElementById('btnEnviar');
-
-  function checa() {
-    if (!form || !btn) return;
-    btn.disabled = !form.checkValidity();
-  }
-
-  if (form && btn) {
-    form.addEventListener('input', checa);
-    form.addEventListener('change', checa);
-    checa();
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) { checa(); return; }
-
-      var d = new FormData(form);
-      var linhas = [
-        'Olá! Vim pelo site e gostaria de um orçamento.',
-        '',
-        'Nome: ' + d.get('nome'),
-        'WhatsApp: ' + d.get('telefone'),
-        'Cidade/bairro: ' + d.get('cidade'),
-        'Ambiente: ' + d.get('ambiente'),
-        'Material: ' + d.get('material'),
-        'Etapa da obra: ' + d.get('etapa')
-      ];
-      var msg = (d.get('mensagem') || '').trim();
-      if (msg) linhas.push('Detalhes: ' + msg);
-
-      if (window.dataLayer) {
-        window.dataLayer.push({ event: 'gerar_lead', origem: 'formulario_orcamento' });
-      }
-
-      window.open('https://wa.me/' + WPP + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank');
-    });
-  }
-
   /* eventos de clique nos CTAs */
-  document.querySelectorAll('[data-cta]').forEach(function (el) {
+  document.querySelectorAll('a[href*="wa.me"][data-cta]').forEach(function (el) {
     el.addEventListener('click', function () {
       if (window.dataLayer) {
         window.dataLayer.push({ event: 'clique_whatsapp', origem: el.getAttribute('data-cta') });
@@ -95,7 +38,7 @@
       if (!s) return;
       track.scrollTo({
         left: s.offsetLeft - (track.clientWidth - s.clientWidth) / 2,
-        behavior: 'smooth'
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
       });
     }
 
@@ -122,6 +65,54 @@
 
     if (prev) prev.addEventListener('click', function () { irPara(Math.max(0, atual() - 1)); });
     if (next) next.addEventListener('click', function () { irPara(Math.min(slides.length - 1, atual() + 1)); });
+  }
+
+  /* Ampliação acessível das fotografias, com navegação por teclado. */
+  var dialog = document.getElementById('lightbox');
+  var photos = Array.from(document.querySelectorAll('.slide img, .card__photo, .split__img img, .hero__img img'));
+  var activePhoto = 0;
+  var lastTrigger;
+  function showPhoto(index) {
+    activePhoto = (index + photos.length) % photos.length;
+    var source = photos[activePhoto];
+    dialog.querySelector('img').src = source.src;
+    dialog.querySelector('img').alt = source.alt;
+  }
+  if (dialog && typeof dialog.showModal === 'function') {
+    photos.forEach(function (photo, index) {
+      var trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'image-trigger';
+      trigger.setAttribute('aria-label', 'Ampliar imagem: ' + photo.alt);
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      if (photo.classList.contains('card__photo')) {
+        photo.classList.remove('card__photo');
+        trigger.classList.add('card__photo');
+      }
+      photo.parentNode.insertBefore(trigger, photo);
+      trigger.appendChild(photo);
+      trigger.addEventListener('click', function () {
+        lastTrigger = trigger;
+        showPhoto(index);
+        dialog.showModal();
+        document.body.classList.add('has-lightbox');
+      });
+    });
+    dialog.querySelector('.lightbox__close').addEventListener('click', function () { dialog.close(); });
+    document.getElementById('lightbox-prev').addEventListener('click', function () { showPhoto(activePhoto - 1); });
+    document.getElementById('lightbox-next').addEventListener('click', function () { showPhoto(activePhoto + 1); });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showPhoto(activePhoto - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); showPhoto(activePhoto + 1); }
+    });
+    dialog.addEventListener('click', function (e) {
+      var rect = dialog.getBoundingClientRect();
+      if (e.target === dialog && (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom)) dialog.close();
+    });
+    dialog.addEventListener('close', function () {
+      document.body.classList.remove('has-lightbox');
+      if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+    });
   }
 
   /* reveal no scroll */
