@@ -37,3 +37,15 @@ A inspeção visual em navegador e os testes interativos não puderam ser conclu
 - Destaques de “1 ano” substituídos por “+5 anos de experiência”.
 - Removida a duração da garantia nos textos e nos dados estruturados.
 - Removidas todas as legendas visíveis das fotos, inclusive na ampliação; preservados os textos alternativos para acessibilidade.
+
+## Fotografias e serviços — revisão de 16/09
+
+- Sete fotos originais identificadas nos prints aplicadas nos cards de cozinha, lavatórios, ilhas, painéis de TV, móveis em pedra e Diversos (duas imagens).
+- As outras 21 fotos do ZIP adicionadas ao portfólio; os oito projetos anteriores foram mantidos.
+- Navegação renomeada para Portfólio.
+- Serviço Soleiras e peitoris removido do conteúdo e dos dados estruturados.
+- Fotografias sem legendas, com ampliação disponível. Nenhuma interface ou conversa do WhatsApp foi incluída na página.
+
+## Foto da abertura
+
+Foto principal substituída pela imagem da ilha de cozinha enviada em 16/09. Texto da headline preservado; carregamento prioritário atualizado para a nova imagem.

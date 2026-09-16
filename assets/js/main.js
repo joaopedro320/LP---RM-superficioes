@@ -69,7 +69,7 @@
 
   /* Ampliação acessível das fotografias, com navegação por teclado. */
   var dialog = document.getElementById('lightbox');
-  var photos = Array.from(document.querySelectorAll('.slide img, .card__photo, .split__img img, .hero__img img'));
+  var photos = Array.from(document.querySelectorAll('.slide img, .card__photo, .service-photo, .split__img img, .hero__img img'));
   var activePhoto = 0;
   var lastTrigger;
   function showPhoto(index) {
