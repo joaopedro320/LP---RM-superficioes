@@ -247,10 +247,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><strong>Própria</strong><span>equipe de instalação</span></li>
       </ul>
     </div>
-    <figure class="hero__img">
-      <img src="assets/img/hero-ilha-cozinha.jpg" width="960" height="1280" alt="Ilha de cozinha em pedra clara com veios naturais, cooktop e forno embutido" fetchpriority="high" decoding="async">
-      
-    </figure>
+    <div class="hero__img hero__slider" id="hero-slider" aria-roledescription="carrossel" aria-label="Projetos da RM Superfícies">
+      <img class="hero__slide is-on" src="assets/img/hero-ilha-cozinha.jpg" width="960" height="1280" alt="Ilha de cozinha em pedra clara com veios naturais, cooktop e forno embutido" fetchpriority="high" decoding="async">
+      <img class="hero__slide" src="assets/img/projeto-rm-11.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Ilha em quartzito com veios marcantes">
+      <img class="hero__slide" src="assets/img/cozinha-bancada-preta.jpg" width="1400" height="1400" loading="lazy" decoding="async" alt="Cozinha com bancada preta e balcão com saia alta">
+      <img class="hero__slide" src="assets/img/projeto-rm-04.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Ilha com veios naturais e forno embutido">
+      <img class="hero__slide" src="assets/img/lavatorio-branco.jpg" width="1400" height="1049" loading="lazy" decoding="async" alt="Lavatório branco com cuba esculpida">
+    </div>
   </div>
 </section>
 
@@ -457,8 +460,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <section class="section section--map" id="contato">
-  <div class="wrap map__in">
-    <div>
+  <div class="wrap">
+    <div class="map__head">
       <p class="eyebrow">Onde estamos</p>
       <h2 class="h2">Galpão em avenida comercial, com chapas para ver de perto</h2>
       <p class="section__lead">Av. Italo Adami, 276 - Vila Zeferina, Itaquaquecetuba - SP, 08574-020.<br>Segunda a sexta das 8h às 18h30.</p>
@@ -467,8 +470,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="btn btn--ghost" href="https://www.instagram.com/rmsuperficies/" target="_blank" rel="noopener">@rmsuperficies</a>
       </div>
     </div>
-    <div class="map__frame">
-      <iframe title="Mapa da RM Superfícies em Itaquaquecetuba" src="https://maps.google.com/maps?q=Av.%20Italo%20Adami%2C%20276%20-%20Vila%20Zeferina%2C%20Itaquaquecetuba%20-%20SP%2C%2008574-020&t=m&z=15&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map__in">
+      <figure class="map__photo">
+        <img src="assets/img/fachada-rm.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Fachada da Marmoraria RM Superfícies na Av. Italo Adami, 276, em Itaquaquecetuba">
+      </figure>
+      <div class="map__frame">
+        <iframe title="Mapa da RM Superfícies em Itaquaquecetuba" src="https://maps.google.com/maps?q=Av.%20Italo%20Adami%2C%20276%20-%20Vila%20Zeferina%2C%20Itaquaquecetuba%20-%20SP%2C%2008574-020&t=m&z=15&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
