@@ -67,9 +67,21 @@
     if (next) next.addEventListener('click', function () { irPara(Math.min(slides.length - 1, atual() + 1)); });
   }
 
+  /* carrossel automático da abertura */
+  var heroSlides = document.querySelectorAll('#hero-slider .hero__slide');
+  if (heroSlides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var heroAtual = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      heroSlides[heroAtual].classList.remove('is-on');
+      heroAtual = (heroAtual + 1) % heroSlides.length;
+      heroSlides[heroAtual].classList.add('is-on');
+    }, 5000);
+  }
+
   /* Ampliação acessível das fotografias, com navegação por teclado. */
   var dialog = document.getElementById('lightbox');
-  var photos = Array.from(document.querySelectorAll('.slide img, .card__photo, .service-photo, .split__img img, .hero__img img'));
+  var photos = Array.from(document.querySelectorAll('.slide img, .card__photo, .service-photo, .split__img img, .map__photo img'));
   var activePhoto = 0;
   var lastTrigger;
   function showPhoto(index) {
